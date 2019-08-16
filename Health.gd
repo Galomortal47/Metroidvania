@@ -4,6 +4,7 @@ var health_max = 20
 var health = 20
 var invicible= false
 var size = 20
+var knockback = Vector2(0,-200)
 
 #func _ready():
 #	$Health.play("health")
@@ -14,6 +15,8 @@ func _process(delta):
 
 func damage(var damage):
 	if invicible == false:
+		knockback.x = get_parent().motion.x * -3
+		get_parent().motion += knockback
 		health -= damage
 #		$Health.advance(damage*100)
 #		$Polygon2D.set_scale(Vector2(health/health_max,1))

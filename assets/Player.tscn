@@ -1,12 +1,13 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/Health.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/damage.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/Shotgun.gd" type="Script" id=4]
-[ext_resource path="res://Scripts/Menu Items.gd" type="Script" id=5]
-[ext_resource path="res://icon.png" type="Texture" id=6]
-[ext_resource path="res://Scripts/Load_Minigame.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/Reload.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Menu Items.gd" type="Script" id=6]
+[ext_resource path="res://icon.png" type="Texture" id=7]
+[ext_resource path="res://Scripts/Load_Minigame.gd" type="Script" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15, 30 )
@@ -197,9 +198,73 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=10]
+resource_name = "Failure"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Line2D3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 52.4462, -61.2451 ), Vector2( 101.358, -61.2451 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 0 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("../Weapons/Label")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "reload"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Line2D3:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ) ]
+}
+
 [sub_resource type="Animation" id=8]
 resource_name = "Load"
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Line2D3:position")
 tracks/0/interp = 1
@@ -228,6 +293,117 @@ tracks/1/keys = {
 "args": [  ],
 "method": "unload_minigame"
 } ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("../Weapons/Label")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "reload"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Line2D2:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Line2D3:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Succes"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Line2D3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 52.4462, -61.2451 ), Vector2( 51.4995, -72.1319 ), Vector2( 52.4462, -61.2451 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.196078, 1, 0, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("../Weapons/Label")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Line2D3:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 4, 2 ), Vector2( 1, 1 ) ]
 }
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -271,8 +447,18 @@ position = Vector2( 0, -30 )
 enabled = true
 cast_to = Vector2( 20, 0 )
 
+[node name="Ledge_Grab_R2" type="RayCast2D" parent="."]
+position = Vector2( 0, -35.3274 )
+enabled = true
+cast_to = Vector2( 20, 0 )
+
 [node name="Ledge_Grab_L" type="RayCast2D" parent="."]
 position = Vector2( 0, -30 )
+enabled = true
+cast_to = Vector2( -20, 0 )
+
+[node name="Ledge_Grab_L2" type="RayCast2D" parent="."]
+position = Vector2( 0, -35.3274 )
 enabled = true
 cast_to = Vector2( -20, 0 )
 
@@ -290,46 +476,56 @@ script = ExtResource( 4 )
 weapon = "res://assets/Bullet.tscn"
 spreed = 1
 timer = 0.2
-damage = 3
+mag = 20
 
 [node name="Shotgun" type="Node2D" parent="Weapons"]
 script = ExtResource( 4 )
 weapon = "res://assets/Bullet.tscn"
 bullet_n = 15
 spreed = 20
+timer = 1.0
+ammo = 40
 
 [node name="Bomb" type="Node2D" parent="Weapons"]
 script = ExtResource( 4 )
 weapon = "res://assets/Bullet.tscn"
 speed = 400
-spreed = 20
 timer = 0.5
 gravity = 25
-damage = 10
+damage = 20
 curve = -600
+ammo = 10
+
+[node name="Label" type="Label" parent="Weapons"]
+margin_left = 43.0737
+margin_top = -27.2958
+margin_right = 83.0737
+margin_bottom = -13.2958
+text = "00/00"
+script = ExtResource( 5 )
 
 [node name="Menu Items" type="CanvasLayer" parent="."]
 editor/display_folded = true
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 
 [node name="Menu" type="Node2D" parent="Menu Items"]
 position = Vector2( 512, 420 )
 
 [node name="icon_down" type="Sprite" parent="Menu Items/Menu"]
 position = Vector2( 0, 120 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="icon_up" type="Sprite" parent="Menu Items/Menu"]
 position = Vector2( 0, -120 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="icon_right" type="Sprite" parent="Menu Items/Menu"]
 position = Vector2( 120, 0 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="icon_left" type="Sprite" parent="Menu Items/Menu"]
 position = Vector2( -120, 0 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="Menu Anim" type="AnimationPlayer" parent="Menu Items"]
 anims/close = SubResource( 4 )
@@ -340,27 +536,31 @@ next/close = "closed"
 next/open = "opened"
 
 [node name="Load_Minigame" type="Node2D" parent="."]
-visible = false
-script = ExtResource( 7 )
+modulate = Color( 1, 0, 0, 0 )
+script = ExtResource( 8 )
 
 [node name="Line2D" type="Line2D" parent="Load_Minigame"]
 position = Vector2( 2.64075, -51.4948 )
 points = PoolVector2Array( 0, 0, 100, 0 )
 width = 5.0
 default_color = Color( 0, 0, 0, 0.501961 )
+texture_mode = 612703316
 
 [node name="Line2D2" type="Line2D" parent="Load_Minigame"]
 position = Vector2( 51.392, -56.7652 )
 points = PoolVector2Array( 0, 0, 0, 10 )
 default_color = Color( 1, 1, 1, 0.501961 )
+texture_mode = -1094114482
 
 [node name="Line2D3" type="Line2D" parent="Load_Minigame"]
-position = Vector2( 42.7485, -61.2451 )
+position = Vector2( 101.358, -61.2451 )
 points = PoolVector2Array( 0, 0, 0, 20 )
 width = 3.0
 default_color = Color( 1, 1, 1, 1 )
+texture_mode = 927712944
 
 [node name="Minigame" type="AnimationPlayer" parent="Load_Minigame"]
-autoplay = "Load"
+anims/Failure = SubResource( 10 )
 anims/Load = SubResource( 8 )
+anims/Succes = SubResource( 9 )
 

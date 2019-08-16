@@ -25,3 +25,5 @@ func attack():
 				if get_collider().has_node("Health"):
 					get_collider().get_node("Health").health -= damage
 		timer_aux = timer
+func update_text():
+	pass

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Health.gd" type="Script" id=1]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "invicible"
 length = 2.0
 tracks/0/type = "value"
@@ -62,28 +62,30 @@ script = ExtResource( 1 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 position = Vector2( 32.0292, -42.7582 )
+scale = Vector2( 1e-005, 1 )
 color = Color( 1, 0, 0, 0.501961 )
 polygon = PoolVector2Array( 65, 15, 0, 15, 0, 0, 65, 0 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 38.7219
-margin_top = -40.7827
-margin_right = 99.7219
-margin_bottom = -26.7827
-text = "20 / 20"
+margin_left = 43.947
+margin_top = -41.3974
+margin_right = 104.947
+margin_bottom = -27.3974
+text = "20/20"
 
 [node name="Invicibility timer" type="AnimationPlayer" parent="."]
-anims/invicible = SubResource( 3 )
+anims/invicible = SubResource( 1 )
 
 [node name="Health" type="AnimationPlayer" parent="."]
 anims/health = SubResource( 2 )
 
 [node name="Label2" type="Label" parent="."]
-modulate = Color( 1, 0, 0, 0 )
+visible = false
+modulate = Color( 1, 0, 0, 1 )
 margin_left = -37.1414
-margin_top = -41.3728
+margin_top = -55.7122
 margin_right = 2.85858
-margin_bottom = -27.3728
+margin_bottom = -41.7122
 text = "9999"
 
 [connection signal="animation_finished" from="Invicibility timer" to="." method="_on_Invicibility_timer_animation_finished"]

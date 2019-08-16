@@ -11,14 +11,19 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if minigame:
-		if Input.is_action_just_pressed("ui_cancel"):
-			for i in range(0,3):
-				get_parent().get_node("Weapons").get_child(i).timer_aux = 0
+	if Input.is_action_just_pressed("ui_cancel"):
+		if minigame:
+			get_parent().get_node("Weapons/Label").reload()
+			$Minigame.set_current_animation("Succes")
+			minigame = false
+		elif $Minigame.get_current_animation() == "load":
+			$Minigame.set_current_animation("Failure")
 #	pass
 
 func load_minigame():
 	minigame = true
+#	if Input.is_action_just_pressed("ui_cancel"):
+#		$Minigame.advance(1)
 
 func unload_minigame():
 	minigame = false

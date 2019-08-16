@@ -9,6 +9,8 @@ func _process(delta):
 		$"Menu Anim".set_current_animation("open")
 		for i in range(0,4):
 				get_parent().get_node("Weapons").get_child(i).enable = select[i]
+				if select[i]:
+					get_parent().get_node("Weapons").get_child(i).update_text()
 		if Input.is_action_pressed("ui_left"):
 			$Menu/icon_left.set_scale(Vector2(2,2))
 			select = [true,false,false,false]

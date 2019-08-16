@@ -12,7 +12,7 @@ var jump_timer = 0.15
 var air_speed = 8
 export var health = 20
 var roll = 400
-var roll_height = 200
+var roll_height = 150
 
 func _ready():
 	$Health.health = health
@@ -30,7 +30,12 @@ func _process(delta):
 	else:
 		jump_aux = jump_timer
 	motion = move_and_slide(motion)
+	die()
 #	pass
+
+func die():
+	if get_node("Health").health <= 0:
+		get_tree().change_scene("res://assets/game over.tscn")
 
 func roll():
 	if Input.is_action_pressed("ui_roll") and not ledge_detect():
@@ -78,4 +83,5 @@ func ground_detect():
 
 func ledge_detect():
 	if $Ledge_Grab_L.is_colliding() or $Ledge_Grab_R.is_colliding():
-		return true
+		if not $Ledge_Grab_L2.is_colliding() and not $Ledge_Grab_R2.is_colliding():
+			return true

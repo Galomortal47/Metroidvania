@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Health.gd" type="Script" id=1]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=3]
 resource_name = "invicible"
 length = 2.0
 tracks/0/type = "value"
@@ -66,14 +66,14 @@ color = Color( 1, 0, 0, 0.501961 )
 polygon = PoolVector2Array( 65, 15, 0, 15, 0, 0, 65, 0 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 32.5748
+margin_left = 38.7219
 margin_top = -40.7827
-margin_right = 93.5748
+margin_right = 99.7219
 margin_bottom = -26.7827
-text = "100 / 100"
+text = "20 / 20"
 
 [node name="Invicibility timer" type="AnimationPlayer" parent="."]
-anims/invicible = SubResource( 1 )
+anims/invicible = SubResource( 3 )
 
 [node name="Health" type="AnimationPlayer" parent="."]
 anims/health = SubResource( 2 )

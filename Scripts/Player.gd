@@ -10,7 +10,7 @@ var jump_ledge = 300
 var jump_aux = 0.0
 var jump_timer = 0.15
 var air_speed = 8
-export var health = 100
+export var health = 20
 var roll = 400
 var roll_height = 200
 
@@ -33,7 +33,7 @@ func _process(delta):
 #	pass
 
 func roll():
-	if Input.is_action_pressed("ui_roll"):
+	if Input.is_action_pressed("ui_roll") and not ledge_detect():
 		$CollisionShape2D/Colision.set_current_animation("roll")
 		if Input.is_action_pressed("ui_right"):
 			if ground_detect():

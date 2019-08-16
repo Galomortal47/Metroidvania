@@ -5,8 +5,8 @@ var motion = Vector2(0,0)
 var speed = 200
 var gravity = 10
 var jump = 400
-export var damage = 10
-export var health = 40
+export var damage = 5
+export var health = 20
 
 func _ready():
 	$Health.health = health

@@ -1,6 +1,6 @@
 extends RayCast2D
 
-var damage = 1
+export var damage = 1
 var enable = false
 export var timer = 2.0
 var timer_aux = 0.0 
@@ -11,7 +11,7 @@ func _process(delta):
 	timer_aux -= delta
 
 func attack():
-	if timer_aux < 0:
+	if true:
 		if Input.is_action_just_pressed("ui_left"):
 			set_cast_to(Vector2(-60,0))
 		elif Input.is_action_just_pressed("ui_right"):

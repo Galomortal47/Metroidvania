@@ -89,7 +89,7 @@ tracks/2/keys = {
 "values": [ Vector2( 25, 15 ), Vector2( 25, 15 ), Vector2( 15, 30 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "close"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Menu:scale")
@@ -116,7 +116,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 resource_name = "closed"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Menu:scale")
@@ -143,8 +143,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "open"
+[sub_resource type="Animation" id=6]
 length = 99999.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Menu:scale")
@@ -171,7 +170,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 resource_name = "opened"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Menu:scale")
@@ -198,7 +197,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 resource_name = "Load"
 loop = true
 tracks/0/type = "value"
@@ -280,8 +279,11 @@ cast_to = Vector2( -20, 0 )
 [node name="Weapons" type="Node2D" parent="."]
 
 [node name="Sword" type="RayCast2D" parent="Weapons"]
+enabled = true
 cast_to = Vector2( 60, 0 )
+collision_mask = 4
 script = ExtResource( 3 )
+damage = 5
 
 [node name="Gun" type="Node2D" parent="Weapons"]
 script = ExtResource( 4 )
@@ -330,10 +332,10 @@ position = Vector2( -120, 0 )
 texture = ExtResource( 6 )
 
 [node name="Menu Anim" type="AnimationPlayer" parent="Menu Items"]
-anims/close = SubResource( 6 )
-anims/closed = SubResource( 7 )
-anims/open = SubResource( 5 )
-anims/opened = SubResource( 8 )
+anims/close = SubResource( 4 )
+anims/closed = SubResource( 5 )
+anims/open = SubResource( 6 )
+anims/opened = SubResource( 7 )
 next/close = "closed"
 next/open = "opened"
 
@@ -346,22 +348,19 @@ position = Vector2( 2.64075, -51.4948 )
 points = PoolVector2Array( 0, 0, 100, 0 )
 width = 5.0
 default_color = Color( 0, 0, 0, 0.501961 )
-texture_mode = 0
 
 [node name="Line2D2" type="Line2D" parent="Load_Minigame"]
 position = Vector2( 51.392, -56.7652 )
 points = PoolVector2Array( 0, 0, 0, 10 )
 default_color = Color( 1, 1, 1, 0.501961 )
-texture_mode = 0
 
 [node name="Line2D3" type="Line2D" parent="Load_Minigame"]
 position = Vector2( 42.7485, -61.2451 )
 points = PoolVector2Array( 0, 0, 0, 20 )
 width = 3.0
 default_color = Color( 1, 1, 1, 1 )
-texture_mode = 0
 
 [node name="Minigame" type="AnimationPlayer" parent="Load_Minigame"]
 autoplay = "Load"
-anims/Load = SubResource( 9 )
+anims/Load = SubResource( 8 )
 

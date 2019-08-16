@@ -8,15 +8,15 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 946.495, 10 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 41.6683, 314.736 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 37.9856, 10 )
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=5]
 resource_name = "Movment2"
 length = 10.0
 loop = true
@@ -33,7 +33,7 @@ tracks/0/keys = {
 "values": [ Vector2( -243.32, 355.398 ), Vector2( -243.32, 355.398 ), Vector2( 134.309, 355.398 ), Vector2( 134.309, 355.398 ), Vector2( -243.32, 355.398 ), Vector2( -243.32, 355.398 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "movment"
 length = 10.0
 loop = true
@@ -50,7 +50,7 @@ tracks/0/keys = {
 "values": [ Vector2( 699.164, 355.398 ), Vector2( 699.164, 355.398 ), Vector2( 286.903, 355.398 ), Vector2( 286.903, 355.398 ), Vector2( 699.164, 355.398 ), Vector2( 699.164, 355.398 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 59.9088, 85.4477 )
 
 [node name="Test" type="Node2D"]
@@ -68,27 +68,27 @@ shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Ground"]
 position = Vector2( 687.705, 465.806 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Ground"]
 position = Vector2( 619.232, 528.727 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Ground"]
 position = Vector2( 806.144, 423.242 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Ground"]
 position = Vector2( 702.793, 902.898 )
-shape = SubResource( 13 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="Ground"]
 position = Vector2( 1487.2, 288.09 )
-shape = SubResource( 13 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="Ground"]
 position = Vector2( -1154.88, 420.592 )
-shape = SubResource( 13 )
+shape = SubResource( 3 )
 
 [node name="Platform" parent="." instance=ExtResource( 1 )]
 
@@ -102,8 +102,8 @@ shape = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platform2"]
 autoplay = "Movment2"
-anims/Movment2 = SubResource( 8 )
-anims/movment = SubResource( 7 )
+anims/Movment2 = SubResource( 5 )
+anims/movment = SubResource( 6 )
 
 [node name="Platform Sticker" type="Area2D" parent="Platform2"]
 collision_layer = 2
@@ -112,7 +112,7 @@ script = ExtResource( 2 )
 
 [node name="Sticker" type="CollisionShape2D" parent="Platform2/Platform Sticker"]
 position = Vector2( 0, -76 )
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 

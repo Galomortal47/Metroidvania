@@ -1,0 +1,197 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Scripts/Platform Sticker.gd" type="Script" id=1]
+[ext_resource path="res://assets/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Enemy.gd" type="Script" id=3]
+[ext_resource path="res://assets/Health.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 946.495, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 41.6683, 314.736 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 37.9856, 10 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "movment"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 4, 6, 9, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 699.164, 355.398 ), Vector2( 699.164, 355.398 ), Vector2( 286.903, 355.398 ), Vector2( 286.903, 355.398 ), Vector2( 699.164, 355.398 ), Vector2( 699.164, 355.398 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 59.9088, 85.4477 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "Movment2"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 4, 6, 9, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -243.32, 355.398 ), Vector2( -243.32, 355.398 ), Vector2( 134.309, 355.398 ), Vector2( 134.309, 355.398 ), Vector2( -243.32, 355.398 ), Vector2( -243.32, 355.398 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "movment"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 4, 6, 9, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 699.164, 355.398 ), Vector2( 699.164, 355.398 ), Vector2( 286.903, 355.398 ), Vector2( 286.903, 355.398 ), Vector2( 699.164, 355.398 ), Vector2( 699.164, 355.398 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 15, 30 )
+
+[sub_resource type="CircleShape2D" id=10]
+radius = 160.0
+
+[node name="Test" type="Node2D"]
+
+[node name="Ground" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2( 523, 589.798 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Ground"]
+position = Vector2( -247.563, 720.25 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ground"]
+position = Vector2( 687.705, 465.806 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Ground"]
+position = Vector2( 619.232, 528.727 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Ground"]
+position = Vector2( 806.144, 423.242 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Ground"]
+position = Vector2( 702.793, 902.898 )
+shape = SubResource( 13 )
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Ground"]
+position = Vector2( 1487.2, 288.09 )
+shape = SubResource( 13 )
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Ground"]
+position = Vector2( -1154.88, 420.592 )
+shape = SubResource( 13 )
+
+[node name="Platform" type="KinematicBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 699.164, 355.398 )
+motion/sync_to_physics = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+shape = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform"]
+autoplay = "movment"
+anims/movment = SubResource( 5 )
+
+[node name="Platform Sticker" type="Area2D" parent="Platform"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 1 )
+
+[node name="Sticker" type="CollisionShape2D" parent="Platform/Platform Sticker"]
+position = Vector2( 0, -76 )
+shape = SubResource( 6 )
+
+[node name="Platform2" type="KinematicBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( -243.32, 355.398 )
+motion/sync_to_physics = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+shape = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform2"]
+autoplay = "Movment2"
+anims/Movment2 = SubResource( 8 )
+anims/movment = SubResource( 7 )
+
+[node name="Platform Sticker" type="Area2D" parent="Platform2"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 1 )
+
+[node name="Sticker" type="CollisionShape2D" parent="Platform2/Platform Sticker"]
+position = Vector2( 0, -76 )
+shape = SubResource( 6 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+
+[node name="Enemy" type="KinematicBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 0, 542.642 )
+collision_layer = 5
+collision_mask = 5
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+shape = SubResource( 9 )
+
+[node name="Area2D" type="Area2D" parent="Enemy"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Area2D"]
+shape = SubResource( 10 )
+
+[node name="Vision" type="RayCast2D" parent="Enemy"]
+enabled = true
+cast_to = Vector2( 0, 500 )
+
+[node name="Damage" type="RayCast2D" parent="Enemy"]
+enabled = true
+cast_to = Vector2( 60, 0 )
+collision_mask = 2
+
+[node name="Ground_Detect" type="RayCast2D" parent="Enemy"]
+position = Vector2( -1.05264, 0 )
+cast_to = Vector2( 0, 31 )
+
+[node name="Health" parent="Enemy" instance=ExtResource( 4 )]
+
+[connection signal="body_shape_entered" from="Platform/Platform Sticker" to="Platform/Platform Sticker" method="_on_Platform_Sticker_body_shape_entered"]
+[connection signal="body_shape_exited" from="Platform/Platform Sticker" to="Platform/Platform Sticker" method="_on_Platform_Sticker_body_shape_exited"]
+[connection signal="body_shape_entered" from="Platform2/Platform Sticker" to="Platform2/Platform Sticker" method="_on_Platform_Sticker_body_shape_entered"]
+[connection signal="body_shape_exited" from="Platform2/Platform Sticker" to="Platform2/Platform Sticker" method="_on_Platform_Sticker_body_shape_exited"]
+[connection signal="body_shape_entered" from="Enemy/Area2D" to="Enemy" method="_on_Area2D_body_shape_entered"]
+[connection signal="body_shape_exited" from="Enemy/Area2D" to="Enemy" method="_on_Area2D_body_shape_exited"]

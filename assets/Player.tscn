@@ -1,0 +1,162 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/Health.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/damage.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Shotgun.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15, 30 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "normal"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:shape:extents")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 15, 30 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:shape")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "roll"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:shape")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.05, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ SubResource( 1 ), SubResource( 1 ), SubResource( 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.05, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 10 ), Vector2( 0, 10 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:shape:extents")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.05, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 25, 15 ), Vector2( 25, 15 ), Vector2( 15, 30 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[node name="Player" type="KinematicBody2D" groups=[
+"player",
+]]
+position = Vector2( 525.104, 518.302 )
+collision_layer = 3
+collision_mask = 3
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Colision" type="AnimationPlayer" parent="CollisionShape2D"]
+anims/normal = SubResource( 2 )
+anims/roll = SubResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, -135 )
+current = true
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+
+[node name="Groud_Middle" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 31 )
+
+[node name="Ground_Left" type="RayCast2D" parent="."]
+position = Vector2( -15, 0 )
+enabled = true
+cast_to = Vector2( 0, 31 )
+
+[node name="Ground_Right" type="RayCast2D" parent="."]
+position = Vector2( 15, 0 )
+enabled = true
+cast_to = Vector2( 0, 31 )
+
+[node name="Ledge_Grab_R" type="RayCast2D" parent="."]
+position = Vector2( 0, -30 )
+enabled = true
+cast_to = Vector2( 20, 0 )
+
+[node name="Ledge_Grab_L" type="RayCast2D" parent="."]
+position = Vector2( 0, -30 )
+enabled = true
+cast_to = Vector2( -20, 0 )
+
+[node name="Health" parent="." instance=ExtResource( 2 )]
+
+[node name="Sword" type="RayCast2D" parent="."]
+editor/display_folded = true
+cast_to = Vector2( 60, 0 )
+script = ExtResource( 3 )
+
+[node name="attack" type="AnimationPlayer" parent="Sword"]
+anims/attack = SubResource( 4 )
+
+[node name="Gun" type="Node2D" parent="."]
+script = ExtResource( 4 )
+weapon = "res://assets/Bullet.tscn"
+

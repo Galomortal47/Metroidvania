@@ -536,7 +536,7 @@ next/close = "closed"
 next/open = "opened"
 
 [node name="Load_Minigame" type="Node2D" parent="."]
-modulate = Color( 1, 0, 0, 0 )
+modulate = Color( 1, 1, 1, 0 )
 script = ExtResource( 8 )
 
 [node name="Line2D" type="Line2D" parent="Load_Minigame"]
@@ -553,7 +553,7 @@ default_color = Color( 1, 1, 1, 0.501961 )
 texture_mode = -1094114482
 
 [node name="Line2D3" type="Line2D" parent="Load_Minigame"]
-position = Vector2( 101.358, -61.2451 )
+position = Vector2( 3.95837, -61.2451 )
 points = PoolVector2Array( 0, 0, 0, 20 )
 width = 3.0
 default_color = Color( 1, 1, 1, 1 )

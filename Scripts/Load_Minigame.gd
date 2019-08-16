@@ -16,7 +16,7 @@ func _process(delta):
 			get_parent().get_node("Weapons/Label").reload()
 			$Minigame.set_current_animation("Succes")
 			minigame = false
-		elif $Minigame.get_current_animation() == "load":
+		elif $Minigame.get_current_animation() == "Load":
 			$Minigame.set_current_animation("Failure")
 #	pass
 

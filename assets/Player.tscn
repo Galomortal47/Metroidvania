@@ -483,7 +483,8 @@ script = ExtResource( 4 )
 weapon = "res://assets/Bullet.tscn"
 bullet_n = 15
 spreed = 20
-timer = 1.0
+timer = 0.5
+mag = 2
 ammo = 40
 
 [node name="Bomb" type="Node2D" parent="Weapons"]

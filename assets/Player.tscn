@@ -487,21 +487,25 @@ cast_to = Vector2( -20, 0 )
 script = ExtResource( 3 )
 weapon = "res://assets/Bullet.tscn"
 spreed = 1
-timer = 1.0
+timer = 0.5
 damage = 5
 mag = 20
 lifespan = 0.15
 infinite = true
 
-[node name="Gun" parent="Weapons" instance=ExtResource( 4 )]
+[node name="Pistol" parent="Weapons" instance=ExtResource( 4 )]
+timer = 1.0
+damage = 5
+ammo = 40
 
-[node name="Shotgun" type="Node2D" parent="Weapons"]
+[node name="Duble Barrel" type="Node2D" parent="Weapons"]
 script = ExtResource( 3 )
 weapon = "res://assets/Bullet.tscn"
 bullet_n = 15
 spreed = 20
 timer = 0.5
 mag = 2
+shot = 2
 ammo = 40
 
 [node name="Bomb" type="Node2D" parent="Weapons"]
@@ -514,6 +518,39 @@ damage = 20
 curve = -600
 ammo = 10
 
+[node name="Sniper" type="Node2D" parent="Weapons"]
+script = ExtResource( 3 )
+weapon = "res://assets/Bullet.tscn"
+speed = 2000
+timer = 0.5
+damage = 10
+mag = 5
+ammo = 10
+
+[node name="Machine Gun" parent="Weapons" instance=ExtResource( 4 )]
+mag = 30
+ammo = 60
+
+[node name="Shotgun" type="Node2D" parent="Weapons"]
+script = ExtResource( 3 )
+weapon = "res://assets/Bullet.tscn"
+bullet_n = 7
+spreed = 10
+timer = 0.5
+mag = 8
+ammo = 40
+
+[node name="Double Pistol" type="Node2D" parent="Weapons"]
+script = ExtResource( 3 )
+weapon = "res://assets/Bullet.tscn"
+bullet_n = 2
+spreed = 2
+timer = 0.5
+damage = 5
+mag = 40
+shot = 2
+ammo = 80
+
 [node name="Label" type="Label" parent="Weapons"]
 margin_left = 43.0737
 margin_top = -27.2958
@@ -523,26 +560,47 @@ text = "00/00"
 script = ExtResource( 5 )
 
 [node name="Menu Items" type="CanvasLayer" parent="."]
-editor/display_folded = true
 script = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Menu Items"]
+margin_left = 492.0
+margin_top = 413.0
+margin_right = 532.0
+margin_bottom = 427.0
 
 [node name="Menu" type="Node2D" parent="Menu Items"]
 position = Vector2( 512, 420 )
 
-[node name="icon_down" type="Sprite" parent="Menu Items/Menu"]
-position = Vector2( 0, 120 )
+[node name="icon0" type="Sprite" parent="Menu Items/Menu"]
+position = Vector2( -120, 0 )
 texture = ExtResource( 7 )
 
-[node name="icon_up" type="Sprite" parent="Menu Items/Menu"]
+[node name="icon1" type="Sprite" parent="Menu Items/Menu"]
+position = Vector2( -80, -80 )
+texture = ExtResource( 7 )
+
+[node name="icon2" type="Sprite" parent="Menu Items/Menu"]
 position = Vector2( 0, -120 )
 texture = ExtResource( 7 )
 
-[node name="icon_right" type="Sprite" parent="Menu Items/Menu"]
+[node name="icon3" type="Sprite" parent="Menu Items/Menu"]
+position = Vector2( 80, -80 )
+texture = ExtResource( 7 )
+
+[node name="icon4" type="Sprite" parent="Menu Items/Menu"]
 position = Vector2( 120, 0 )
 texture = ExtResource( 7 )
 
-[node name="icon_left" type="Sprite" parent="Menu Items/Menu"]
-position = Vector2( -120, 0 )
+[node name="icon5" type="Sprite" parent="Menu Items/Menu"]
+position = Vector2( 80, 80 )
+texture = ExtResource( 7 )
+
+[node name="icon6" type="Sprite" parent="Menu Items/Menu"]
+position = Vector2( 0, 120 )
+texture = ExtResource( 7 )
+
+[node name="icon7" type="Sprite" parent="Menu Items/Menu"]
+position = Vector2( -80, 80 )
 texture = ExtResource( 7 )
 
 [node name="Menu Anim" type="AnimationPlayer" parent="Menu Items"]

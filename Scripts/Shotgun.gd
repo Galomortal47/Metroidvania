@@ -12,6 +12,7 @@ export var curve = 0
 export var mag = 1
 export var lifespan = 1.0
 export var infinite = false
+export var shot = 1
 var mag_aux = mag
 export var ammo = 100
 var timer_aux = 0.0 
@@ -38,7 +39,7 @@ func shoot():
 	if Input.is_action_pressed("ui_cancel") and timer_aux < 0 and mag_aux > 0:
 		timer_aux = timer
 		if not infinite:
-			mag_aux-= 1
+			mag_aux-= shot
 		update_text()
 		for i in range(0,bullet_n):
 			var bullet =  load(weapon)

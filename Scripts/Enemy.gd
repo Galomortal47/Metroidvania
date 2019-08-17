@@ -2,9 +2,10 @@ extends KinematicBody2D
 
 var angle = 0.0
 var motion = Vector2(0,0)
-var speed = 200
+var speed = 20
+var max_speed = 200
 var gravity = 10
-var jump = 400
+var jump = 200
 export var damage = 5
 export var health = 20
 
@@ -22,6 +23,7 @@ func _process(delta):
 #ar dano ao encostar no jgador
 func damage():
 	if $Damage.is_colliding():
+		motion.x = motion.x * -3
 		if $Damage.get_collider().has_node("Health"):
 			$Damage.get_collider().get_node("Health").damage(damage) 
 
@@ -31,13 +33,15 @@ func hunt_player():
 		if $Vision.get_collider().is_in_group("player"):
 			$Vision.rotate(get_angle_to($Vision.get_collider().get_position()) - $Vision.get_rotation() - 1.57)
 			if $Vision.get_collider().get_position().x - get_position().x > 0:
-				motion.x = speed
+				if motion.x < max_speed:
+					motion.x += speed
 				$Damage.set_cast_to(Vector2(60,0))
 			else:
-				motion.x = -speed
+				if motion.x > -max_speed:
+					motion.x -= speed
 				$Damage.set_cast_to(Vector2(-60,0))
 			if $Vision.get_collider().get_position().y - get_position().y < -100:
-				motion.y = -jump
+				motion.y += -jump
 	else:
 		motion.x = 0
 

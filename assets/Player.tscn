@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/Health.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scripts/Menu Items.gd" type="Script" id=6]
 [ext_resource path="res://icon.png" type="Texture" id=7]
 [ext_resource path="res://Scripts/Load_Minigame.gd" type="Script" id=8]
+[ext_resource path="res://assets/Block.gd" type="Script" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15, 30 )
@@ -198,7 +199,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=8]
 resource_name = "Failure"
 length = 2.0
 tracks/0/type = "value"
@@ -263,8 +264,7 @@ tracks/4/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "Load"
+[sub_resource type="Animation" id=9]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Line2D3:position")
 tracks/0/interp = 1
@@ -345,8 +345,7 @@ tracks/5/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "Succes"
+[sub_resource type="Animation" id=10]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Line2D3:position")
 tracks/0/interp = 1
@@ -406,16 +405,36 @@ tracks/4/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 4, 2 ), Vector2( 1, 1 ) ]
 }
 
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 10, 26.6219 )
+
+[sub_resource type="Animation" id=12]
+resource_name = "block"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
 ]]
-collision_layer = 3
+collision_layer = 7
 collision_mask = 3
 script = ExtResource( 1 )
 
 [node name="Health" parent="." instance=ExtResource( 2 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+editor/display_folded = true
 shape = SubResource( 1 )
 
 [node name="Colision" type="AnimationPlayer" parent="CollisionShape2D"]
@@ -463,6 +482,7 @@ enabled = true
 cast_to = Vector2( -20, 0 )
 
 [node name="Weapons" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Sword" type="RayCast2D" parent="Weapons"]
 enabled = true
@@ -537,6 +557,7 @@ next/close = "closed"
 next/open = "opened"
 
 [node name="Load_Minigame" type="Node2D" parent="."]
+editor/display_folded = true
 modulate = Color( 1, 1, 1, 0 )
 script = ExtResource( 8 )
 
@@ -561,7 +582,20 @@ default_color = Color( 1, 1, 1, 1 )
 texture_mode = 927712944
 
 [node name="Minigame" type="AnimationPlayer" parent="Load_Minigame"]
-anims/Failure = SubResource( 10 )
-anims/Load = SubResource( 8 )
-anims/Succes = SubResource( 9 )
+anims/Failure = SubResource( 8 )
+anims/Load = SubResource( 9 )
+anims/Succes = SubResource( 10 )
+
+[node name="Block" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block"]
+position = Vector2( -30, 0 )
+shape = SubResource( 11 )
+disabled = true
+
+[node name="block" type="AnimationPlayer" parent="Block"]
+anims/block = SubResource( 12 )
 

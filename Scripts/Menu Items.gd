@@ -15,7 +15,7 @@ func _process(delta):
 		for i in range(0,menu_size):
 				get_parent().get_node("Weapons").get_child(i).enable = select[i]
 				if select[i]:
-					get_node("Label").set_text(str(get_parent().get_node("Weapons").get_child(i).get_name()))
+					get_node("Menu/Label").set_text(str(get_parent().get_node("Weapons").get_child(i).get_name()))
 					get_parent().get_node("Weapons").get_child(i).update_text()
 		if Input.is_action_just_pressed("ui_left"):
 			a -= 1

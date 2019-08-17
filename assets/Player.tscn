@@ -486,6 +486,7 @@ cast_to = Vector2( -20, 0 )
 [node name="Sword" type="Node2D" parent="Weapons"]
 script = ExtResource( 3 )
 weapon = "res://assets/Bullet.tscn"
+speed = 400
 spreed = 1
 timer = 0.5
 damage = 5
@@ -493,18 +494,23 @@ mag = 20
 lifespan = 0.15
 infinite = true
 
-[node name="Pistol" parent="Weapons" instance=ExtResource( 4 )]
+[node name="Revolver" parent="Weapons" instance=ExtResource( 4 )]
+speed = 400
 timer = 1.0
 damage = 5
-ammo = 40
+mag = 6
+lifespan = 5.0
+ammo = 30
 
 [node name="Duble Barrel" type="Node2D" parent="Weapons"]
 script = ExtResource( 3 )
 weapon = "res://assets/Bullet.tscn"
+speed = 400
 bullet_n = 15
 spreed = 20
 timer = 0.5
 mag = 2
+lifespan = 5.0
 shot = 2
 ammo = 40
 
@@ -516,38 +522,46 @@ timer = 0.5
 gravity = 25
 damage = 20
 curve = -600
+lifespan = 5.0
 ammo = 10
 
 [node name="Sniper" type="Node2D" parent="Weapons"]
 script = ExtResource( 3 )
 weapon = "res://assets/Bullet.tscn"
-speed = 2000
+speed = 800
 timer = 0.5
 damage = 10
 mag = 5
+lifespan = 5.0
 ammo = 10
 
 [node name="Machine Gun" parent="Weapons" instance=ExtResource( 4 )]
+speed = 400
 mag = 30
+lifespan = 5.0
 ammo = 60
 
 [node name="Shotgun" type="Node2D" parent="Weapons"]
 script = ExtResource( 3 )
 weapon = "res://assets/Bullet.tscn"
+speed = 400
 bullet_n = 7
 spreed = 10
 timer = 0.5
 mag = 8
+lifespan = 5.0
 ammo = 40
 
 [node name="Double Pistol" type="Node2D" parent="Weapons"]
 script = ExtResource( 3 )
 weapon = "res://assets/Bullet.tscn"
+speed = 400
 bullet_n = 2
 spreed = 2
 timer = 0.5
 damage = 5
 mag = 40
+lifespan = 5.0
 shot = 2
 ammo = 80
 
@@ -562,14 +576,13 @@ script = ExtResource( 5 )
 [node name="Menu Items" type="CanvasLayer" parent="."]
 script = ExtResource( 6 )
 
-[node name="Label" type="Label" parent="Menu Items"]
-margin_left = 492.0
-margin_top = 413.0
-margin_right = 532.0
-margin_bottom = 427.0
-
 [node name="Menu" type="Node2D" parent="Menu Items"]
 position = Vector2( 512, 420 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Menu Items/Menu"]
+scale = Vector2( 1.2, 1.2 )
+color = Color( 0, 0, 0, 0.498039 )
+polygon = PoolVector2Array( -120, 0, -80, -80, 0, -120, 80, -80, 120, 0, 80, 80, 0, 120, -80, 80 )
 
 [node name="icon0" type="Sprite" parent="Menu Items/Menu"]
 position = Vector2( -120, 0 )
@@ -602,6 +615,15 @@ texture = ExtResource( 7 )
 [node name="icon7" type="Sprite" parent="Menu Items/Menu"]
 position = Vector2( -80, 80 )
 texture = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="Menu Items/Menu"]
+margin_left = -20.4633
+margin_top = -7.0
+margin_right = 19.537
+margin_bottom = 7.0
+rect_pivot_offset = Vector2( -0.51178, -0.0862732 )
+align = 1
+autowrap = true
 
 [node name="Menu Anim" type="AnimationPlayer" parent="Menu Items"]
 anims/close = SubResource( 4 )

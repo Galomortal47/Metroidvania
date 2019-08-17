@@ -44,12 +44,12 @@ func shoot():
 		for i in range(0,bullet_n):
 			var bullet =  load(weapon)
 			var bullet_instance = bullet.instance()
+			bullet_instance.set_position(get_global_position())
 			bullet_instance.speed = speed
 			bullet_instance.gravity = gravity
 			bullet_instance.damage = damage
 			bullet_instance.curve = curve
 			bullet_instance.lifespan = lifespan
-			bullet_instance.set_position(get_global_position())
 			match (dir):
 				1:
 					bullet_instance.set_rotation_degrees(-180 +rand_range(-spreed,spreed))

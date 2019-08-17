@@ -18,6 +18,7 @@ func _process(delta):
 
 func attack():
 	if $bullet.is_colliding():
-		if $bullet.get_collider().has_node("Health"):
-			$bullet.get_collider().get_node("Health").health -= damage
-			queue_free()
+		if $bullet.get_collider().is_in_group("enemy"):
+			if $bullet.get_collider().has_node("Health"):
+				$bullet.get_collider().get_node("Health").health -= damage
+				queue_free()

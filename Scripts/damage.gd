@@ -22,8 +22,10 @@ func attack():
 			set_cast_to(Vector2(0,60))
 		if Input.is_action_just_pressed("ui_cancel"):
 			if is_colliding():
-				if get_collider().has_node("Health"):
-					get_collider().get_node("Health").health -= damage
+				if get_collider().is_in_group("enemy"):
+					if get_collider().has_node("Health"):
+						get_collider().get_node("Health").health -= damage
 		timer_aux = timer
 func update_text():
+	get_parent().get_node("Label").set_text("infinite/infinite")
 	pass

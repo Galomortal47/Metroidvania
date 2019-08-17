@@ -117,6 +117,7 @@ shape = SubResource( 7 )
 [node name="Player" parent="." instance=ExtResource( 3 )]
 
 [node name="Enemy" parent="." instance=ExtResource( 4 )]
+position = Vector2( -1040.79, 648.127 )
 
 [connection signal="body_shape_entered" from="Platform2/Platform Sticker" to="Platform2/Platform Sticker" method="_on_Platform_Sticker_body_shape_entered"]
 [connection signal="body_shape_exited" from="Platform2/Platform Sticker" to="Platform2/Platform Sticker" method="_on_Platform_Sticker_body_shape_exited"]

@@ -10,6 +10,7 @@ export var gravity = 0
 export var damage = 1
 export var curve = 0
 export var mag = 1
+export var lifespan = 1.0
 var mag_aux = mag
 export var ammo = 100
 var timer_aux = 0.0 
@@ -44,6 +45,7 @@ func shoot():
 			bullet_instance.gravity = gravity
 			bullet_instance.damage = damage
 			bullet_instance.curve = curve
+			bullet_instance.lifespan = lifespan
 			bullet_instance.set_position(get_global_position())
 			match (dir):
 				1:

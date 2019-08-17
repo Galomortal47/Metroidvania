@@ -481,14 +481,23 @@ position = Vector2( 0, -35.3274 )
 enabled = true
 cast_to = Vector2( -20, 0 )
 
-[node name="Weapons" type="Node2D" parent="."]
-
-[node name="Sword" type="RayCast2D" parent="Weapons"]
+[node name="Sword" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 60, 0 )
 collision_mask = 4
 script = ExtResource( 3 )
 damage = 5
+
+[node name="Weapons" type="Node2D" parent="."]
+
+[node name="Sword" type="Node2D" parent="Weapons"]
+script = ExtResource( 4 )
+weapon = "res://assets/Bullet.tscn"
+spreed = 1
+timer = 0.2
+damage = 5
+mag = 20
+lifespan = 0.1
 
 [node name="Gun" type="Node2D" parent="Weapons"]
 script = ExtResource( 4 )

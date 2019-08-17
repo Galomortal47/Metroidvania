@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/Health.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scripts/damage.gd" type="Script" id=3]
-[ext_resource path="res://Scripts/Shotgun.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Shotgun.gd" type="Script" id=3]
+[ext_resource path="res://assets/Gun_engine.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/Reload.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/Menu Items.gd" type="Script" id=6]
 [ext_resource path="res://icon.png" type="Texture" id=7]
@@ -481,33 +481,22 @@ position = Vector2( 0, -35.3274 )
 enabled = true
 cast_to = Vector2( -20, 0 )
 
-[node name="Sword" type="RayCast2D" parent="."]
-enabled = true
-cast_to = Vector2( 60, 0 )
-collision_mask = 4
-script = ExtResource( 3 )
-damage = 0
-
 [node name="Weapons" type="Node2D" parent="."]
 
 [node name="Sword" type="Node2D" parent="Weapons"]
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 weapon = "res://assets/Bullet.tscn"
 spreed = 1
 timer = 1.0
 damage = 5
 mag = 20
 lifespan = 0.15
+infinite = true
 
-[node name="Gun" type="Node2D" parent="Weapons"]
-script = ExtResource( 4 )
-weapon = "res://assets/Bullet.tscn"
-spreed = 1
-timer = 0.2
-mag = 20
+[node name="Gun" parent="Weapons" instance=ExtResource( 4 )]
 
 [node name="Shotgun" type="Node2D" parent="Weapons"]
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 weapon = "res://assets/Bullet.tscn"
 bullet_n = 15
 spreed = 20
@@ -516,7 +505,7 @@ mag = 2
 ammo = 40
 
 [node name="Bomb" type="Node2D" parent="Weapons"]
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 weapon = "res://assets/Bullet.tscn"
 speed = 400
 timer = 0.5

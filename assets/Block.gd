@@ -5,8 +5,8 @@ func _process(delta):
 		$CollisionShape2D.set_disabled(false)
 	else:
 		$CollisionShape2D.set_disabled(true)
-	if Input.is_action_just_pressed("ui_left"):
+	if Input.is_action_just_pressed("ui_left") and not Input.is_action_pressed("ui_block"):
 		$CollisionShape2D.set_position(Vector2(-35,0))
-	if Input.is_action_just_pressed("ui_right"):
+	if Input.is_action_just_pressed("ui_right") and not Input.is_action_pressed("ui_block"):
 		$CollisionShape2D.set_position(Vector2(35,0))
 #	pass

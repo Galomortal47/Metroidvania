@@ -11,6 +11,7 @@ export var damage = 1
 export var curve = 0
 export var mag = 1
 export var lifespan = 1.0
+export var infinite = false
 var mag_aux = mag
 export var ammo = 100
 var timer_aux = 0.0 
@@ -36,7 +37,8 @@ func shoot():
 		dir = 4
 	if Input.is_action_pressed("ui_cancel") and timer_aux < 0 and mag_aux > 0:
 		timer_aux = timer
-		mag_aux-= 1
+		if not infinite:
+			mag_aux-= 1
 		update_text()
 		for i in range(0,bullet_n):
 			var bullet =  load(weapon)
@@ -61,7 +63,10 @@ func shoot():
 		get_parent().get_parent().get_node("Load_Minigame/Minigame").set_current_animation("Load")
 
 func update_text():
-	get_parent().get_node("Label").set_text(str(mag_aux) + "/" + str(ammo))
+	if infinite:
+		get_parent().get_node("Label").set_text("infinite/infinite")
+	else:
+		get_parent().get_node("Label").set_text(str(mag_aux) + "/" + str(ammo))
 
 func reload():
 	mag_aux = mag

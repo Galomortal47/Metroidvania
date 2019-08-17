@@ -23,7 +23,7 @@ func _process(delta):
 #ar dano ao encostar no jgador
 func damage():
 	if $Damage.is_colliding():
-		motion.x = motion.x * -3
+		motion.x = motion.x * -2
 		if $Damage.get_collider().has_node("Health"):
 			$Damage.get_collider().get_node("Health").damage(damage) 
 

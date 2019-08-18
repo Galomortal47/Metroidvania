@@ -7,9 +7,11 @@ var max_speed = 1000
 var gravity = 10
 var collect = false
 var ramdom_pos = 60
+var life_time = 1
 var falloff = 0.95
 
 func _process(delta):
+	print(life_time)
 	if not $ground_detect.is_colliding():
 		set_position(get_position() + Vector2(0,gravity))
 	else:

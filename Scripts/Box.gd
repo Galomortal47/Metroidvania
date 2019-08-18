@@ -1,9 +1,9 @@
 extends RigidBody2D
 
 var bolt_path = "res://assets/Bolts.tscn"
-var bolt_number = 10
+var bolt_number = rand_range(5,15)
 var ramdom_pos = 30
-
+var motion = Vector2(0,0)
 func _process(delta):
 	if $Health.health <= 0:
 		for i in range(0,bolt_number):

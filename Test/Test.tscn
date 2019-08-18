@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/Platform.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Platform Sticker.gd" type="Script" id=2]
@@ -6,14 +6,16 @@
 [ext_resource path="res://icon.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/Mouse.gd" type="Script" id=5]
 [ext_resource path="res://assets/Enemy.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scripts/screenshot.png" type="Texture" id=7]
-[ext_resource path="res://Scripts/Mirror.gd" type="Script" id=8]
-[ext_resource path="res://assets/Bolts.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scripts/Box.gd" type="Script" id=10]
-[ext_resource path="res://assets/Health.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/Bolts.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/Box.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scripts/screenshot.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/Mirror.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 946.495, 10 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 1846.42, 10 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
@@ -141,9 +143,6 @@ colors = PoolColorArray( 0.648438, 0.975281, 1, 1 )
 [sub_resource type="GradientTexture" id=11]
 gradient = SubResource( 10 )
 
-[sub_resource type="RectangleShape2D" id=14]
-extents = Vector2( 20, 20 )
-
 [node name="Test" type="Node2D"]
 
 [node name="Ground" type="StaticBody2D" parent="."]
@@ -155,7 +154,7 @@ shape = SubResource( 1 )
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Ground"]
 position = Vector2( -247.563, 720.25 )
-shape = SubResource( 1 )
+shape = SubResource( 12 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Ground"]
 position = Vector2( 687.705, 465.806 )
@@ -170,7 +169,7 @@ position = Vector2( 806.144, 423.242 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Ground"]
-position = Vector2( 702.793, 902.898 )
+position = Vector2( 1489.65, 900.506 )
 shape = SubResource( 3 )
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="Ground"]
@@ -206,6 +205,7 @@ position = Vector2( 0, -76 )
 shape = SubResource( 7 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
 
 [node name="mouse" type="Sprite" parent="Player"]
 visible = false
@@ -215,26 +215,8 @@ script = ExtResource( 5 )
 [node name="Enemy" parent="." instance=ExtResource( 6 )]
 position = Vector2( -1040.79, 648.127 )
 
-[node name="Mirror" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0.498039 )
-position = Vector2( 154.501, 660 )
-scale = Vector2( 1, 0.232664 )
-z_index = 4096
-texture = ExtResource( 7 )
-region_enabled = true
-region_rect = Rect2( 0, 130, 1024, 500 )
-script = ExtResource( 8 )
-
-[node name="Mirror2" type="Sprite" parent="."]
-material = SubResource( 9 )
-position = Vector2( 154.501, 660 )
-scale = Vector2( 1, 0.232664 )
-z_index = 4096
-texture = SubResource( 11 )
-region_enabled = true
-region_rect = Rect2( 0, 130, 1024, 500 )
-
 [node name="Coins" type="CanvasLayer" parent="."]
+editor/display_folded = true
 
 [node name="Coins" type="Label" parent="Coins"]
 margin_left = 46.8655
@@ -250,25 +232,95 @@ margin_right = 171.446
 margin_bottom = 68.0756
 text = "100"
 
-[node name="Bolts" parent="." instance=ExtResource( 9 )]
+[node name="Bolts" parent="." instance=ExtResource( 7 )]
 
-[node name="Box" type="RigidBody2D" parent="." groups=[
-"enemy",
-]]
-position = Vector2( 245.98, 556.307 )
-collision_layer = 5
-collision_mask = 5
-mass = 5000.0
-gravity_scale = 2.0
+[node name="Box" parent="." instance=ExtResource( 8 )]
+
+[node name="Boxes" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Box2" parent="Boxes" instance=ExtResource( 8 )]
+position = Vector2( 1073.09, 541.343 )
+
+[node name="Box9" parent="Boxes" instance=ExtResource( 8 )]
+position = Vector2( 1073.09, 493.369 )
+
+[node name="Box16" parent="Boxes" instance=ExtResource( 8 )]
+position = Vector2( 1073.09, 437.656 )
+
+[node name="Box3" parent="Boxes" instance=ExtResource( 8 )]
+position = Vector2( 1121.83, 541.343 )
+
+[node name="Box10" parent="Boxes" instance=ExtResource( 8 )]
+position = Vector2( 1121.83, 493.369 )
+
+[node name="Box15" parent="Boxes" instance=ExtResource( 8 )]
+position = Vector2( 1121.83, 437.656 )
+
+[node name="Box4" parent="Boxes" instance=ExtResource( 8 )]
+position = Vector2( 1172.9, 541.343 )
+
+[node name="Box7" parent="Boxes" instance=ExtResource( 8 )]
+position = Vector2( 1172.9, 493.369 )
+
+[node name="Box13" parent="Boxes" instance=ExtResource( 8 )]
+position = Vector2( 1172.9, 437.656 )
+
+[node name="Box5" parent="Boxes" instance=ExtResource( 8 )]
+position = Vector2( 1229.39, 541.343 )
+
+[node name="Box8" parent="Boxes" instance=ExtResource( 8 )]
+position = Vector2( 1229.39, 493.369 )
+
+[node name="Box12" parent="Boxes" instance=ExtResource( 8 )]
+position = Vector2( 1229.39, 437.656 )
+
+[node name="Box6" parent="Boxes" instance=ExtResource( 8 )]
+position = Vector2( 1288.2, 541.343 )
+
+[node name="Box11" parent="Boxes" instance=ExtResource( 8 )]
+position = Vector2( 1288.2, 493.369 )
+
+[node name="Box14" parent="Boxes" instance=ExtResource( 8 )]
+position = Vector2( 1288.2, 437.656 )
+
+[node name="Mirror3" type="Sprite" parent="."]
+editor/display_folded = true
+modulate = Color( 1, 1, 1, 0.498039 )
+position = Vector2( 150, 660 )
+scale = Vector2( 1, 0.232664 )
+z_index = 4096
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 0, 130, 1024, 500 )
 script = ExtResource( 10 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
-shape = SubResource( 14 )
+[node name="Mirror4" type="Sprite" parent="Mirror3"]
+material = SubResource( 9 )
+scale = Vector2( 1, 1 )
+z_index = 4096
+texture = SubResource( 11 )
+region_enabled = true
+region_rect = Rect2( 0, 130, 1024, 500 )
 
-[node name="Health" parent="Box" instance=ExtResource( 11 )]
-health_max = 1
-health = 1
+[node name="Mirror5" type="Sprite" parent="."]
+editor/display_folded = true
+modulate = Color( 1, 1, 1, 0.498039 )
+position = Vector2( 1174, 660 )
+scale = Vector2( 1, 0.232664 )
+z_index = 4096
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 0, 130, 1024, 500 )
+script = ExtResource( 10 )
+
+[node name="Mirror6" type="Sprite" parent="Mirror5"]
+material = SubResource( 9 )
+scale = Vector2( 1, 1 )
+z_index = 4096
+texture = SubResource( 11 )
+region_enabled = true
+region_rect = Rect2( 0, 130, 1024, 500 )
 
 [connection signal="body_shape_entered" from="Platform2/Platform Sticker" to="Platform2/Platform Sticker" method="_on_Platform_Sticker_body_shape_entered"]
 [connection signal="body_shape_exited" from="Platform2/Platform Sticker" to="Platform2/Platform Sticker" method="_on_Platform_Sticker_body_shape_exited"]
-[connection signal="body_shape_entered" from="Box" to="Box" method="_on_Box_body_shape_entered"]

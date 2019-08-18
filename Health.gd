@@ -1,7 +1,7 @@
 extends Node2D
 
-var health_max = 20
-var health = 20
+export var health_max = 20
+export var health = 20
 var invicible= false
 var size = 20
 var knockback = Vector2(0,-200)

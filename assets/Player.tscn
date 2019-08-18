@@ -93,6 +93,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "close"
+length = 2600.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Menu:scale")
 tracks/0/interp = 1
@@ -502,7 +503,7 @@ mag = 6
 lifespan = 5.0
 ammo = 30
 
-[node name="Duble Barrel" type="Node2D" parent="Weapons"]
+[node name="Double Barrel" type="Node2D" parent="Weapons"]
 script = ExtResource( 3 )
 weapon = "res://assets/Bullet.tscn"
 speed = 400
@@ -577,7 +578,7 @@ script = ExtResource( 5 )
 script = ExtResource( 6 )
 
 [node name="Menu" type="Node2D" parent="Menu Items"]
-position = Vector2( 512, 420 )
+position = Vector2( 512, 435 )
 
 [node name="Polygon2D" type="Polygon2D" parent="Menu Items/Menu"]
 scale = Vector2( 1.2, 1.2 )

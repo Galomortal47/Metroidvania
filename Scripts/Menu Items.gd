@@ -28,7 +28,8 @@ func _process(delta):
 		print(a)
 		select(a)
 	else:
-		$Menu.set_scale(Vector2(0,0))
+		$"Menu Anim".set_current_animation("close")
+#		$Menu.set_scale(Vector2(0,0))
 		Engine.set_time_scale(1) 
 
 func select(var x = 0):

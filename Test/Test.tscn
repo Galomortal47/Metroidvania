@@ -215,7 +215,6 @@ script = ExtResource( 5 )
 position = Vector2( -1040.79, 648.127 )
 
 [node name="Coins" type="CanvasLayer" parent="."]
-editor/display_folded = true
 
 [node name="Coins" type="Label" parent="Coins"]
 margin_left = 46.8655

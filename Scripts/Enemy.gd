@@ -25,7 +25,7 @@ func _process(delta):
 #ar dano ao encostar no jgador
 func damage():
 	if $Damage.is_colliding():
-		motion += Vector2(-500,0)
+		stun()
 		if $Damage.get_collider().has_node("Health"):
 			$Damage.get_collider().get_node("Health").damage(damage) 
 
@@ -66,5 +66,8 @@ func die():
 		
 
 func stun():
-	motion += Vector2(-500,-300)
+	if motion.x > 0:
+		motion += Vector2(-500,0)
+	else:
+		motion += Vector2(500,0)
 

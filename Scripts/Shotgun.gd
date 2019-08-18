@@ -19,8 +19,10 @@ var mag_aux = mag
 export var ammo = 100
 var timer_aux = 0.0 
 var enable = false
+var ammo_max
 
 func _ready():
+	ammo_max = ammo
 	mag_aux = mag
 
 func _process(delta):
@@ -71,7 +73,7 @@ func update_text():
 	if infinite:
 		get_parent().get_node("Label").set_text("infinite/infinite")
 	else:
-		get_parent().get_node("Label").set_text(str(mag_aux) + "/" + str(ammo))
+		get_parent().get_node("Label").set_text(str(mag_aux) + "/" + str(ammo)+"/"+str(ammo_max))
 
 func reload():
 	mag_aux = mag

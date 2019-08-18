@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/Health.tscn" type="PackedScene" id=2]
@@ -7,8 +7,9 @@
 [ext_resource path="res://Scripts/Reload.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/Menu Items.gd" type="Script" id=6]
 [ext_resource path="res://icon.png" type="Texture" id=7]
-[ext_resource path="res://Scripts/Load_Minigame.gd" type="Script" id=8]
-[ext_resource path="res://assets/Block.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/Shop.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/Load_Minigame.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/Block.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15, 30 )
@@ -520,7 +521,7 @@ weapon = "res://assets/Bullet.tscn"
 speed = 400
 timer = 0.5
 gravity = 25
-damage = 2
+damage = 4
 curve = -600
 lifespan = 5.0
 pierce = true
@@ -532,6 +533,7 @@ script = ExtResource( 3 )
 weapon = "res://assets/Bullet.tscn"
 speed = 800
 timer = 0.5
+damage = 2
 mag = 5
 lifespan = 5.0
 pierce = true
@@ -579,6 +581,7 @@ script = ExtResource( 5 )
 script = ExtResource( 6 )
 
 [node name="Menu" type="Node2D" parent="Menu Items"]
+editor/display_folded = true
 position = Vector2( 512, 165 )
 
 [node name="Polygon2D" type="Polygon2D" parent="Menu Items/Menu"]
@@ -635,9 +638,20 @@ anims/opened = SubResource( 7 )
 next/close = "closed"
 next/open = "opened"
 
-[node name="Load_Minigame" type="Node2D" parent="."]
-modulate = Color( 1, 1, 1, 0 )
+[node name="Shop" type="Node2D" parent="Menu Items"]
 script = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="Menu Items/Shop"]
+margin_left = 655.0
+margin_top = 90.0
+margin_right = 742.0
+margin_bottom = 104.0
+text = "Buy Ammo X:"
+
+[node name="Load_Minigame" type="Node2D" parent="."]
+editor/display_folded = true
+modulate = Color( 1, 1, 1, 0 )
+script = ExtResource( 9 )
 
 [node name="Line2D" type="Line2D" parent="Load_Minigame"]
 position = Vector2( 2.64075, -51.4948 )
@@ -668,7 +682,7 @@ anims/Succes = SubResource( 10 )
 editor/display_folded = true
 collision_layer = 4
 collision_mask = 4
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block"]
 position = Vector2( -35, 0 )

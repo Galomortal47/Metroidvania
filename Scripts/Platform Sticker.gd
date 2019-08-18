@@ -11,6 +11,6 @@ func _on_Platform_Sticker_body_shape_entered(body_id, body, body_shape, area_sha
 func _on_Platform_Sticker_body_shape_exited(body_id, body, body_shape, area_shape):
 	var pos = body.get_global_position()
 	self.remove_child(body)
-	get_parent().get_parent().add_child(body)
+	get_tree().get_root().add_child(body)
 	body.set_global_position(pos)
 	pass # Replace with function body.

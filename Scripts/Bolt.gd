@@ -26,8 +26,7 @@ func _process(delta):
 func _on_magnetic_body_shape_entered(body_id, body, body_shape, area_shape):
 	if body.is_in_group("player"):
 		collect = true
-		if has_node("/root/Test/Player"):
-			body2 = get_node("/root/Test/Player")
+		body2 = body
 	pass # Replace with function body.
 
 func _on_destroy_body_shape_entered(body_id, body, body_shape, area_shape):

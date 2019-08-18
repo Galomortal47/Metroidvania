@@ -90,4 +90,7 @@ func ledge_detect():
 			return true
 
 func stun():
-	motion += Vector2(500,-300)
+	if motion.x > 0:
+		motion += Vector2(-500,-300)
+	else:
+		motion += Vector2(500,-300)

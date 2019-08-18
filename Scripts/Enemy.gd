@@ -6,8 +6,10 @@ var speed = 20
 var max_speed = 200
 var gravity = 10
 var jump = 200
+var drag = 0.9
 export var damage = 5
 export var health = 20
+var stun = false
 
 func _ready():
 	$Health.health = health
@@ -23,7 +25,7 @@ func _process(delta):
 #ar dano ao encostar no jgador
 func damage():
 	if $Damage.is_colliding():
-		motion.x = motion.x * -2
+		motion += Vector2(-500,0)
 		if $Damage.get_collider().has_node("Health"):
 			$Damage.get_collider().get_node("Health").damage(damage) 
 
@@ -43,7 +45,7 @@ func hunt_player():
 			if $Vision.get_collider().get_position().y - get_position().y < -100:
 				motion.y += -jump
 	else:
-		motion.x = 0
+		motion.x *= drag
 
 #mudar a direçao do raycasyt na direçao do jogador
 
@@ -62,3 +64,7 @@ func die():
 	if get_node("Health").health <= 0:
 		queue_free()
 		
+
+func stun():
+	motion += Vector2(-500,-300)
+

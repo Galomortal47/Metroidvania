@@ -13,6 +13,8 @@ export var mag = 1
 export var lifespan = 1.0
 export var infinite = false
 export var shot = 1
+export var pierce = false
+export var particle_size = 15
 var mag_aux = mag
 export var ammo = 100
 var timer_aux = 0.0 
@@ -50,6 +52,8 @@ func shoot():
 			bullet_instance.damage = damage
 			bullet_instance.curve = curve
 			bullet_instance.lifespan = lifespan
+			bullet_instance.pierce = pierce
+			bullet_instance.particle_size = particle_size
 			match (dir):
 				1:
 					bullet_instance.set_rotation_degrees(-180 +rand_range(-spreed,spreed))

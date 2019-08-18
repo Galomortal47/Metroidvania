@@ -6,9 +6,12 @@ var speed = 500
 var gravity = 0
 var curve = 500
 var lifespan = 1.0
+var particle_size = 15
+var pierce = false
 
 func _ready():
 	motion.y += curve
+	$CPUParticles2D.scale_amount =particle_size
 
 func _process(delta):
 	attack()
@@ -25,4 +28,5 @@ func attack():
 		if $bullet.get_collider().is_in_group("enemy"):
 			if $bullet.get_collider().has_node("Health"):
 				$bullet.get_collider().get_node("Health").health -= damage
-				queue_free()
+				if not pierce:
+					queue_free()

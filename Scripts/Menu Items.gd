@@ -25,7 +25,6 @@ func _process(delta):
 			a =  menu_size-1
 		if a >  menu_size-1:
 			a = 0
-		print(a)
 		select(a)
 	else:
 		$"Menu Anim".set_current_animation("close")

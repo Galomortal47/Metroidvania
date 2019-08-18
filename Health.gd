@@ -15,8 +15,7 @@ func _process(delta):
 
 func damage(var damage):
 	if invicible == false:
-		knockback.x = get_parent().motion.x * -3
-		get_parent().motion += knockback
+		get_parent().stun()
 		health -= damage
 #		$Health.advance(damage*100)
 #		$Polygon2D.set_scale(Vector2(health/health_max,1))

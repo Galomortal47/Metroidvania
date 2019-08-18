@@ -13,6 +13,7 @@ var air_speed = 8
 export var health = 20
 var roll = 400
 var roll_height = 150
+var knockback = Vector2(0,0)
 
 func _ready():
 	$Health.health = health
@@ -38,7 +39,7 @@ func die():
 		get_tree().change_scene("res://assets/game over.tscn")
 
 func roll():
-	if Input.is_action_pressed("ui_roll") and not ledge_detect():
+	if Input.is_action_pressed("ui_roll") and not ledge_detect() and not Input.is_action_pressed("ui_block"):
 		$CollisionShape2D/Colision.set_current_animation("roll")
 		if Input.is_action_pressed("ui_right"):
 			if ground_detect():
@@ -50,6 +51,8 @@ func roll():
 				if motion.x > -max_speed - roll:
 					motion.x -= roll
 				motion.y -= roll_height
+	else:
+		$CollisionShape2D/Colision.set_current_animation("normal")
 
 func ledge_grab():
 	if Input.is_action_just_pressed("ui_accept"):
@@ -85,3 +88,6 @@ func ledge_detect():
 	if $Ledge_Grab_L.is_colliding() or $Ledge_Grab_R.is_colliding():
 		if not $Ledge_Grab_L2.is_colliding() and not $Ledge_Grab_R2.is_colliding():
 			return true
+
+func stun():
+	motion += Vector2(500,-300)

@@ -61,10 +61,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.05, 0.9, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0.05 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ SubResource( 1 ), SubResource( 1 ), SubResource( 1 ) ]
+"values": [ SubResource( 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:position")
@@ -73,10 +73,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.05, 0.9, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0.05 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 10 ), Vector2( 0, 10 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 10 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath(".:shape:extents")
@@ -85,10 +85,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.05, 0.9, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0.05 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 25, 15 ), Vector2( 25, 15 ), Vector2( 15, 30 ) ]
+"values": [ Vector2( 25, 15 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -435,7 +435,6 @@ script = ExtResource( 1 )
 [node name="Health" parent="." instance=ExtResource( 2 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-editor/display_folded = true
 shape = SubResource( 1 )
 
 [node name="Colision" type="AnimationPlayer" parent="CollisionShape2D"]
@@ -503,7 +502,7 @@ mag = 6
 lifespan = 5.0
 ammo = 30
 
-[node name="Double Barrel" type="Node2D" parent="Weapons"]
+[node name="Double Barrel Shotgun" type="Node2D" parent="Weapons"]
 script = ExtResource( 3 )
 weapon = "res://assets/Bullet.tscn"
 speed = 400
@@ -521,9 +520,11 @@ weapon = "res://assets/Bullet.tscn"
 speed = 400
 timer = 0.5
 gravity = 25
-damage = 20
+damage = 2
 curve = -600
 lifespan = 5.0
+pierce = true
+particle_size = 30
 ammo = 10
 
 [node name="Sniper" type="Node2D" parent="Weapons"]
@@ -531,9 +532,9 @@ script = ExtResource( 3 )
 weapon = "res://assets/Bullet.tscn"
 speed = 800
 timer = 0.5
-damage = 10
 mag = 5
 lifespan = 5.0
+pierce = true
 ammo = 10
 
 [node name="Machine Gun" parent="Weapons" instance=ExtResource( 4 )]
@@ -578,7 +579,7 @@ script = ExtResource( 5 )
 script = ExtResource( 6 )
 
 [node name="Menu" type="Node2D" parent="Menu Items"]
-position = Vector2( 512, 435 )
+position = Vector2( 512, 165 )
 
 [node name="Polygon2D" type="Polygon2D" parent="Menu Items/Menu"]
 scale = Vector2( 1.2, 1.2 )
@@ -635,7 +636,6 @@ next/close = "closed"
 next/open = "opened"
 
 [node name="Load_Minigame" type="Node2D" parent="."]
-editor/display_folded = true
 modulate = Color( 1, 1, 1, 0 )
 script = ExtResource( 8 )
 
@@ -665,6 +665,7 @@ anims/Load = SubResource( 9 )
 anims/Succes = SubResource( 10 )
 
 [node name="Block" type="StaticBody2D" parent="."]
+editor/display_folded = true
 collision_layer = 4
 collision_mask = 4
 script = ExtResource( 9 )

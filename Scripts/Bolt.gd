@@ -1,17 +1,16 @@
 extends Node2D
 
 var body2
-var speed = 1
+var speed = 0.5
 var accel = 1.1
 var max_speed = 1000
 var gravity = 10
 var collect = false
-var ramdom_pos = 60
+var ramdom_pos = 120
 var life_time = 1
 var falloff = 0.95
 
 func _process(delta):
-	print(life_time)
 	if not $ground_detect.is_colliding():
 		set_position(get_position() + Vector2(0,gravity))
 	else:
@@ -27,7 +26,8 @@ func _process(delta):
 func _on_magnetic_body_shape_entered(body_id, body, body_shape, area_shape):
 	if body.is_in_group("player"):
 		collect = true
-		body2 = body
+		if has_node("/root/Test/Player"):
+			body2 = get_node("/root/Test/Player")
 	pass # Replace with function body.
 
 func _on_destroy_body_shape_entered(body_id, body, body_shape, area_shape):

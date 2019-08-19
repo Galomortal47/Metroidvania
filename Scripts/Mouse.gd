@@ -3,8 +3,8 @@ extends Sprite
 var speed = 500
 var mouse_mode = false
 
-func _ready():
-	Input.set_mouse_mode(1)
+#func _ready():
+#	Input.set_mouse_mode(1)
 
 func _process(delta):
 	if Input.get_last_mouse_speed() > Vector2(50,50):

@@ -214,22 +214,6 @@ script = ExtResource( 5 )
 [node name="Enemy" parent="." instance=ExtResource( 6 )]
 position = Vector2( -1040.79, 648.127 )
 
-[node name="Coins" type="CanvasLayer" parent="."]
-
-[node name="Coins" type="Label" parent="Coins"]
-margin_left = 46.8655
-margin_top = 54.0756
-margin_right = 129.865
-margin_bottom = 68.0756
-text = "Coins:"
-
-[node name="Number" type="Label" parent="Coins"]
-margin_left = 88.4462
-margin_top = 54.0756
-margin_right = 171.446
-margin_bottom = 68.0756
-text = "100"
-
 [node name="Bolts" parent="." instance=ExtResource( 7 )]
 
 [node name="Box" parent="." instance=ExtResource( 8 )]
@@ -295,18 +279,12 @@ script = ExtResource( 10 )
 
 [node name="Mirror4" type="Sprite" parent="Water2"]
 material = SubResource( 10 )
-scale = Vector2( 1, 1 )
 z_index = 4096
 texture = SubResource( 12 )
 region_enabled = true
 region_rect = Rect2( 0, 130, 1024, 500 )
 
 [node name="Water" parent="." instance=ExtResource( 11 )]
-
-[node name="Shop" type="StaticBody2D" parent="." groups=[
-"Shop",
-]]
-position = Vector2( -5.48892, 587.975 )
 
 [connection signal="body_shape_entered" from="Platform2/Platform Sticker" to="Platform2/Platform Sticker" method="_on_Platform_Sticker_body_shape_entered"]
 [connection signal="body_shape_exited" from="Platform2/Platform Sticker" to="Platform2/Platform Sticker" method="_on_Platform_Sticker_body_shape_exited"]

@@ -1,0 +1,19 @@
+[gd_scene format=2]
+
+[node name="Coins" type="CanvasLayer"]
+editor/display_folded = true
+
+[node name="Coins" type="Label" parent="."]
+margin_left = 46.8655
+margin_top = 54.0756
+margin_right = 129.865
+margin_bottom = 68.0756
+text = "Coins:"
+
+[node name="Number" type="Label" parent="."]
+margin_left = 88.4462
+margin_top = 54.0756
+margin_right = 171.446
+margin_bottom = 68.0756
+text = "100"
+

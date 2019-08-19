@@ -37,10 +37,12 @@ func _process(delta):
 
 func die():
 	if get_node("Health").health <= 0:
+		$Save.data.money = int(int($Coins/Number.get_text()) * 0.75)
+		$Save.save()
 		get_tree().change_scene("res://assets/game over.tscn")
 
 func roll():
-	if Input.is_action_just_pressed("ui_roll") and not ledge_detect() and not Input.is_action_pressed("ui_block"):
+	if Input.is_action_pressed("ui_roll") and not ledge_detect() and not Input.is_action_pressed("ui_block"):
 		if Input.is_action_pressed("ui_right"):
 			if ground_detect():
 				if motion.x < max_speed + roll:

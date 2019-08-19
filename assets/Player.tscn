@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/Health.tscn" type="PackedScene" id=2]
@@ -13,6 +13,45 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15, 30 )
+
+[sub_resource type="Animation" id=13]
+resource_name = "crouch"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:shape")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 15 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:shape:extents")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 25, 15 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "normal"
@@ -62,7 +101,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.05 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ SubResource( 1 ) ]
@@ -74,10 +113,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.05 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 10 ) ]
+"values": [ Vector2( 0, 15 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath(".:shape:extents")
@@ -86,7 +125,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.05 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 25, 15 ) ]
@@ -439,6 +478,7 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Colision" type="AnimationPlayer" parent="CollisionShape2D"]
+anims/crouch = SubResource( 13 )
 anims/normal = SubResource( 2 )
 anims/roll = SubResource( 3 )
 
@@ -449,18 +489,19 @@ drag_margin_h_enabled = false
 drag_margin_v_enabled = false
 
 [node name="Groud_Middle" type="RayCast2D" parent="."]
+position = Vector2( 0, 30 )
 enabled = true
-cast_to = Vector2( 0, 31 )
+cast_to = Vector2( 0, 1 )
 
 [node name="Ground_Left" type="RayCast2D" parent="."]
-position = Vector2( -15, 0 )
+position = Vector2( -15, 30 )
 enabled = true
-cast_to = Vector2( 0, 31 )
+cast_to = Vector2( 0, 1 )
 
 [node name="Ground_Right" type="RayCast2D" parent="."]
-position = Vector2( 15, 0 )
+position = Vector2( 15, 30 )
 enabled = true
-cast_to = Vector2( 0, 31 )
+cast_to = Vector2( 0, 1 )
 
 [node name="Ledge_Grab_R" type="RayCast2D" parent="."]
 position = Vector2( 0, -30 )
@@ -581,7 +622,6 @@ script = ExtResource( 5 )
 script = ExtResource( 6 )
 
 [node name="Menu" type="Node2D" parent="Menu Items"]
-editor/display_folded = true
 position = Vector2( 512, 165 )
 
 [node name="Polygon2D" type="Polygon2D" parent="Menu Items/Menu"]
@@ -630,6 +670,17 @@ rect_pivot_offset = Vector2( -0.51178, -0.0862732 )
 align = 1
 autowrap = true
 
+[node name="Shop" type="Node2D" parent="Menu Items/Menu"]
+position = Vector2( -512, -165 )
+script = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="Menu Items/Menu/Shop"]
+margin_left = 655.0
+margin_top = 90.0
+margin_right = 742.0
+margin_bottom = 104.0
+text = "Craft Ammo: UP 50 bolts"
+
 [node name="Menu Anim" type="AnimationPlayer" parent="Menu Items"]
 anims/close = SubResource( 4 )
 anims/closed = SubResource( 5 )
@@ -637,16 +688,6 @@ anims/open = SubResource( 6 )
 anims/opened = SubResource( 7 )
 next/close = "closed"
 next/open = "opened"
-
-[node name="Shop" type="Node2D" parent="Menu Items"]
-script = ExtResource( 8 )
-
-[node name="Label" type="Label" parent="Menu Items/Shop"]
-margin_left = 655.0
-margin_top = 90.0
-margin_right = 742.0
-margin_bottom = 104.0
-text = "Buy Ammo X:"
 
 [node name="Load_Minigame" type="Node2D" parent="."]
 editor/display_folded = true

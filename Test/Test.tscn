@@ -303,5 +303,10 @@ region_rect = Rect2( 0, 130, 1024, 500 )
 
 [node name="Water" parent="." instance=ExtResource( 11 )]
 
+[node name="Shop" type="StaticBody2D" parent="." groups=[
+"Shop",
+]]
+position = Vector2( -5.48892, 587.975 )
+
 [connection signal="body_shape_entered" from="Platform2/Platform Sticker" to="Platform2/Platform Sticker" method="_on_Platform_Sticker_body_shape_entered"]
 [connection signal="body_shape_exited" from="Platform2/Platform Sticker" to="Platform2/Platform Sticker" method="_on_Platform_Sticker_body_shape_exited"]

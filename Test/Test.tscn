@@ -8,7 +8,7 @@
 [ext_resource path="res://assets/Enemy.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/Bolts.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/Box.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scripts/screenshot.png" type="Texture" id=9]
+[ext_resource path="res://Test/screenshot.png" type="Texture" id=9]
 [ext_resource path="res://Scripts/Mirror.gd" type="Script" id=10]
 [ext_resource path="res://assets/Water.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/Pick Up.tscn" type="PackedScene" id=12]
@@ -25,7 +25,7 @@ extents = Vector2( 1846.42, 10 )
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 41.6683, 314.736 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 length = 10.0
 loop = true
 tracks/0/type = "value"
@@ -41,7 +41,7 @@ tracks/0/keys = {
 "values": [ Vector2( -243.32, 355.398 ), Vector2( -243.32, 355.398 ), Vector2( 183.272, 355.398 ), Vector2( 183.272, 355.398 ), Vector2( -243.32, 355.398 ), Vector2( -243.32, 355.398 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 length = 10.0
 loop = true
 tracks/0/type = "value"
@@ -57,7 +57,7 @@ tracks/0/keys = {
 "values": [ Vector2( 699.164, 355.398 ), Vector2( 699.164, 355.398 ), Vector2( 286.903, 355.398 ), Vector2( 286.903, 355.398 ), Vector2( 699.164, 355.398 ), Vector2( 699.164, 355.398 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 37.9856, 10 )
 
 [sub_resource type="Animation" id=8]
@@ -216,8 +216,8 @@ position = Vector2( 840.566, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platform"]
 autoplay = "Movment2"
-anims/Movment2 = SubResource( 6 )
-anims/movment = SubResource( 7 )
+anims/Movment2 = SubResource( 5 )
+anims/movment = SubResource( 6 )
 
 [node name="Platform2" parent="Platform" instance=ExtResource( 1 )]
 
@@ -231,7 +231,7 @@ position = Vector2( -243.32, 355.398 )
 motion/sync_to_physics = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2/Platform2"]
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platform2/Platform2"]
 autoplay = "Movment2"

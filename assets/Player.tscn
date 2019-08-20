@@ -520,18 +520,17 @@ drag_margin_h_enabled = false
 drag_margin_v_enabled = false
 
 [node name="Weapons" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Sword" type="Node2D" parent="Weapons"]
 script = ExtResource( 3 )
 weapon = "res://assets/Bullet.tscn"
 speed = 400
-spreed = 1
 timer = 0.5
 damage = 5
 mag = 20
 lifespan = 0.15
 infinite = true
+pierce = true
 
 [node name="Revolver" parent="Weapons" instance=ExtResource( 4 )]
 speed = 400
@@ -563,7 +562,7 @@ damage = 4
 curve = -600
 lifespan = 5.0
 pierce = true
-particle_size = 30
+particle_size = 45
 ammo = 10
 
 [node name="Sniper" type="Node2D" parent="Weapons"]
@@ -583,29 +582,29 @@ mag = 30
 lifespan = 5.0
 ammo = 60
 
-[node name="Shotgun" type="Node2D" parent="Weapons"]
+[node name="bow and arrow" type="Node2D" parent="Weapons"]
 script = ExtResource( 3 )
 weapon = "res://assets/Bullet.tscn"
 speed = 400
-bullet_n = 7
-spreed = 10
-timer = 0.5
-mag = 8
+spreed = 3
+timer = 0.0
+gravity = 2
+damage = 7
+curve = -100
 lifespan = 5.0
 ammo = 40
 
-[node name="Double Pistol" type="Node2D" parent="Weapons"]
+[node name="FireTrowher" type="Node2D" parent="Weapons"]
 script = ExtResource( 3 )
 weapon = "res://assets/Bullet.tscn"
-speed = 400
-bullet_n = 2
-spreed = 2
-timer = 0.5
-damage = 5
-mag = 40
-lifespan = 5.0
-shot = 2
-ammo = 80
+speed = 150
+spreed = 10
+timer = 0.1
+gravity = -2
+curve = 50
+mag = 100
+lifespan = 2.0
+particle_size = 30
 
 [node name="Label" type="Label" parent="Weapons"]
 margin_left = 43.0737
@@ -619,6 +618,7 @@ script = ExtResource( 5 )
 script = ExtResource( 6 )
 
 [node name="Menu" type="Node2D" parent="Menu Items"]
+editor/display_folded = true
 position = Vector2( 512, 165 )
 
 [node name="Polygon2D" type="Polygon2D" parent="Menu Items/Menu"]
@@ -691,7 +691,6 @@ texture_mode = 612703316
 position = Vector2( 51.392, -56.7652 )
 points = PoolVector2Array( 0, 0, 0, 10 )
 default_color = Color( 1, 1, 1, 0.501961 )
-texture_mode = 0
 
 [node name="Line2D3" type="Line2D" parent="Load_Minigame"]
 position = Vector2( 3.95837, -61.2451 )

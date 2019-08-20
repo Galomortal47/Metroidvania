@@ -222,6 +222,7 @@ anims/movment = SubResource( 6 )
 [node name="Platform2" parent="Platform" instance=ExtResource( 1 )]
 
 [node name="Platform2" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( 209.068, -1.43201 )
 scale = Vector2( -1, 1 )
 

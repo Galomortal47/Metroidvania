@@ -6,7 +6,7 @@ var price = [500,2000,3000,4000,8000,9000,1500,2500]
 var items_n = 7
 
 func _process(delta):
-	if is_colliding():
+	if is_colliding() and Input.is_action_pressed("ui_select"): 
 		if Input.is_action_just_pressed("ui_right"):
 			select += 1
 		if Input.is_action_just_pressed("ui_left"):

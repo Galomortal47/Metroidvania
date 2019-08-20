@@ -10,6 +10,7 @@ var drag = 0.9
 export var damage = 5
 export var health = 20
 var stun = false
+var enemy = preload("res://Scripts/Enemy_class.gd").new()
 var boltspawner = preload("bolt_spawner.gd").new()
 var attack = Vector2(60,0)
 

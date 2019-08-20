@@ -4,10 +4,6 @@ export var health = 0
 export var gun_id = 1
 export var ammo = 10
 
-func _ready():
-	randomize()
-	gun_id = rand_range(0,7)
-
 func _on_Pick_Up_body_shape_entered(body_id, body, body_shape, area_shape):
 	if body.has_node("Health"):
 		body.get_node("Health").health += health

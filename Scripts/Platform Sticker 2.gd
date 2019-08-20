@@ -10,7 +10,7 @@ func stick(var raycast):
 	if raycast.is_colliding() and not has_node("Player"):
 		player = raycast.get_collider()
 		var pos =  player.get_global_position()
-		get_tree().get_root().get_node("Test").remove_child( player)
+		player.get_parent().remove_child( player)
 		self.add_child(player)
 		player.set_global_position(pos)
 		parent = true

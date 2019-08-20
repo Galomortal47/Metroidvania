@@ -531,6 +531,19 @@ mag = 20
 lifespan = 0.15
 infinite = true
 pierce = true
+have = true
+
+[node name="bow and arrow" type="Node2D" parent="Weapons"]
+script = ExtResource( 3 )
+weapon = "res://assets/Bullet.tscn"
+speed = 500
+spreed = 3
+timer = 0.0
+gravity = 2
+damage = 7
+curve = -100
+lifespan = 5.0
+ammo = 40
 
 [node name="Revolver" parent="Weapons" instance=ExtResource( 4 )]
 speed = 400
@@ -582,18 +595,6 @@ mag = 30
 lifespan = 5.0
 ammo = 60
 
-[node name="bow and arrow" type="Node2D" parent="Weapons"]
-script = ExtResource( 3 )
-weapon = "res://assets/Bullet.tscn"
-speed = 400
-spreed = 3
-timer = 0.0
-gravity = 2
-damage = 7
-curve = -100
-lifespan = 5.0
-ammo = 40
-
 [node name="FireTrowher" type="Node2D" parent="Weapons"]
 script = ExtResource( 3 )
 weapon = "res://assets/Bullet.tscn"
@@ -615,6 +616,7 @@ text = "00/00"
 script = ExtResource( 5 )
 
 [node name="Menu Items" type="CanvasLayer" parent="."]
+editor/display_folded = true
 script = ExtResource( 6 )
 
 [node name="Menu" type="Node2D" parent="Menu Items"]
@@ -691,13 +693,14 @@ texture_mode = 612703316
 position = Vector2( 51.392, -56.7652 )
 points = PoolVector2Array( 0, 0, 0, 10 )
 default_color = Color( 1, 1, 1, 0.501961 )
+texture_mode = 612703316
 
 [node name="Line2D3" type="Line2D" parent="Load_Minigame"]
 position = Vector2( 3.95837, -61.2451 )
 points = PoolVector2Array( 0, 0, 0, 20 )
 width = 3.0
 default_color = Color( 1, 1, 1, 1 )
-texture_mode = 927712944
+texture_mode = 612703316
 
 [node name="Minigame" type="AnimationPlayer" parent="Load_Minigame"]
 anims/Failure = SubResource( 9 )

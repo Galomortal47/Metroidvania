@@ -2,7 +2,12 @@ extends Node
 
 var save = "res://save.json"
 var file = File.new()
-var data = {"hp":20,"level":"res://Levels/Test.tscn","money":100,"position_x":0,"position_y":0}
+var data = {"hp":20,
+"level":"res://Levels/Test.tscn",
+"money":100,"position_x":0,
+"position_y":0,
+ "guns" : [false,false,false,false,false,false,false,false]
+}
 
 
 func _ready():

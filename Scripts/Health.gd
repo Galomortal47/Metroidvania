@@ -11,6 +11,8 @@ var knockback = Vector2(0,-200)
 #	$Health.set_speed_scale(0.0001) 
 
 func _process(delta):
+	if health > health_max:
+		health = health_max
 	$Label.set_text(str(health) + "/" + str(health_max))
 
 func damage(var damage):
